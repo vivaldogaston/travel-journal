@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import styled from "styled-components";
+import { travels } from "./travels";
+import worldIcon from "./images/world-icon.png";
+import Card from "./Card";
 
-function App() {
+const App = () => {
+  //console.log(travels);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header>
+        <img src={worldIcon} />
+        <span>my travel journal</span>
+      </Header>
+      <Container>
+        {travels?.map((travel) => (
+          <Card key={travel.title} {...travel} />
+        ))}
+      </Container>
     </div>
   );
-}
+};
 
 export default App;
+const Header = styled.header`
+  background: #f55a5a;
+  width: 100%;
+  heigth: 30px;
+  padding: 15px 0px;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  span {
+    margin-left: 8px;
+  }
+`;
+
+const Container = styled.div`
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
